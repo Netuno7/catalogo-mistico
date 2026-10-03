@@ -8,29 +8,45 @@ import {
   PERGUNTAS_FREQUENTES
 } from "./data/servicos";
 
-// Componente do Banner de Destaque / Promoção
-const DestaqueInicial = () => (
-  <section className="destaque-container">
-    {CONFIG_SISTEMA.IMAGEM_DESTAQUE && (
-      <div className="destaque-banner-wrapper">
-        <div className="promo-badge">
-          <span>✦ OFERTA ESPECIAL ✦</span>
+// Componente do Banner de Destaque / Promoção Mês de Outubro com Botão WhatsApp Direto
+const DestaqueInicial = () => {
+  const mensagemOutubro = encodeURIComponent("Olá, Sacerdotisa Vênus! Quero aproveitar a Promoção do Mês de Outubro!");
+  const linkWaOutubro = `https://wa.me/${CONFIG_SISTEMA.WHATSAPP_NUMERO}?text=${mensagemOutubro}`;
+
+  return (
+    <section className="destaque-container">
+      {CONFIG_SISTEMA.IMAGEM_DESTAQUE && (
+        <div className="destaque-banner-wrapper">
+          <div className="promo-badge">
+            <span>✦ PROMOÇÃO MÊS DE OUTUBRO ✦</span>
+          </div>
+          <div className="destaque-banner">
+            <img 
+              src={CONFIG_SISTEMA.IMAGEM_DESTAQUE} 
+              alt="Destaque Promoção de Outubro" 
+              className="destaque-img" 
+            />
+            <div className="destaque-overlay-glow"></div>
+          </div>
+          
+          {/* Botão de Compra Direta no WhatsApp para a Promoção de Outubro */}
+          <a 
+            href={linkWaOutubro} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-promo-whatsapp"
+          >
+            ✦ GARANTIR PROMOÇÃO DE OUTUBRO NO WHATSAPP ✦
+          </a>
+
+          <div className="destaque-decor-line">
+            <span className="decor-diamond">◆</span>
+          </div>
         </div>
-        <div className="destaque-banner">
-          <img 
-            src={CONFIG_SISTEMA.IMAGEM_DESTAQUE} 
-            alt="Destaque Sacerdotisa Vênus" 
-            className="destaque-img" 
-          />
-          <div className="destaque-overlay-glow"></div>
-        </div>
-        <div className="destaque-decor-line">
-          <span className="decor-diamond">◆</span>
-        </div>
-      </div>
-    )}
-  </section>
-);
+      )}
+    </section>
+  );
+};
 
 // Ícones SVG para as Redes Sociais
 const IconInstagram = () => (
