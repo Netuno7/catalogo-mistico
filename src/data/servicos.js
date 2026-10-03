@@ -14,8 +14,8 @@ import img14 from '../assets/14.png';
 import img15 from '../assets/15.png';
 import img16 from '../assets/16.png';
 
-// Imagem em Destaque Promoção
-import imgDestaque from '../assets/destaque01.png';
+// Imagem em Destaque Promoção Mês de Outubro (1x1)
+import imgDestaque from '../assets/outubro.jpeg';
 
 // Imagens dos Baralhos/Oráculos
 import imgBaralhoExu from '../assets/baralho-exu.jpeg';
