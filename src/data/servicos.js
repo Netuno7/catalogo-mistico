@@ -22,6 +22,11 @@ import imgBaralhoExu from '../assets/baralho-exu.jpeg';
 import imgBaralhoLucifer from '../assets/baralho-lucifer.jpeg';
 import imgBaralhoPadilha from '../assets/baralho-padilha.jpeg';
 
+// Imagens dos Cursos (1x1)
+import imgCurso1 from '../assets/curso1.jpeg';
+import imgCurso2 from '../assets/curso2.jpeg';
+import imgCurso3 from '../assets/curso3.jpeg';
+
 // Depoimentos / Prints
 import dep1 from '../assets/depoimentos/1.png';
 import dep2 from '../assets/depoimentos/2.png';
@@ -246,6 +251,33 @@ export const SERVICOS = [
     preco: "2.199,00",
     imagem: img16,
     temVariantes: false
+  }
+];
+
+export const CURSOS = [
+  {
+    id: "curso-1",
+    nome: "Iniciação à Magia & Oráculos",
+    descricao: "Aprenda os fundamentos da cartomancia e interpretação mística com direcionamento prático e fundamentado.",
+    imagem: imgCurso1,
+    preco: "199,00",
+    tag: "Exclusivo"
+  },
+  {
+    id: "curso-2",
+    nome: "Desenvolvimento de Médium & Firmezas",
+    descricao: "Técnicas de firmeza espiritual, proteção de altar, manipulação de velas e alinhamento de energia ancestral.",
+    imagem: imgCurso2,
+    preco: "499,00",
+    tag: "Avançado"
+  },
+  {
+    id: "curso-3",
+    nome: "Consagração & Alta Magia Espiritual",
+    descricao: "Curso completo focado no domínio de rituais, canalização de forças espirituais e consagrações de alta intensidade.",
+    imagem: imgCurso3,
+    preco: "999,00",
+    tag: "Formação"
   }
 ];
 
