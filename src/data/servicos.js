@@ -257,7 +257,7 @@ export const SERVICOS = [
 export const CURSOS = [
   {
     id: "curso-1",
-    nome: "Iniciação à Magia & Oráculos",
+    nome: "",
     descricao: "Aprenda os fundamentos da cartomancia e interpretação mística com direcionamento prático e fundamentado.",
     imagem: imgCurso1,
     preco: "199,00",
@@ -265,7 +265,7 @@ export const CURSOS = [
   },
   {
     id: "curso-2",
-    nome: "Desenvolvimento de Médium & Firmezas",
+    nome: "",
     descricao: "Técnicas de firmeza espiritual, proteção de altar, manipulação de velas e alinhamento de energia ancestral.",
     imagem: imgCurso2,
     preco: "499,00",
@@ -273,7 +273,7 @@ export const CURSOS = [
   },
   {
     id: "curso-3",
-    nome: "Consagração & Alta Magia Espiritual",
+    nome: "",
     descricao: "Curso completo focado no domínio de rituais, canalização de forças espirituais e consagrações de alta intensidade.",
     imagem: imgCurso3,
     preco: "999,00",
