@@ -4,11 +4,12 @@ import {
   CONFIG_SISTEMA,
   CATEGORIAS_SERVICOS,
   SERVICOS,
+  CURSOS,
   DEPOIMENTOS,
   PERGUNTAS_FREQUENTES
 } from "./data/servicos";
 
-// Componente do Banner de Destaque / Promoção Mês de Outubro com Botão WhatsApp Direto
+// Componente do Banner de Destaque / Promoção Mês de Outubro
 const DestaqueInicial = () => {
   const mensagemOutubro = encodeURIComponent("Olá, Sacerdotisa Vênus! Quero aproveitar a Promoção do Mês de Outubro!");
   const linkWaOutubro = `https://wa.me/${CONFIG_SISTEMA.WHATSAPP_NUMERO}?text=${mensagemOutubro}`;
@@ -29,7 +30,6 @@ const DestaqueInicial = () => {
             <div className="destaque-overlay-glow"></div>
           </div>
           
-          {/* Botão de Compra Direta no WhatsApp para a Promoção de Outubro */}
           <a 
             href={linkWaOutubro} 
             target="_blank" 
@@ -136,13 +136,13 @@ const RedesSociaisSection = () => (
 );
 
 // Barra de Pesquisa
-const BarraBusca = ({ termoBusca, setTermoBusca }) => (
+const BarraBusca = ({ termoBusca, setTermoBusca, placeholder }) => (
   <section className="filter-section">
     <div className="search-box-wrapper">
       <input
         type="text"
         className="search-input"
-        placeholder="O que você precisa hoje? Digite aqui..."
+        placeholder={placeholder || "O que você precisa hoje? Digite aqui..."}
         value={termoBusca}
         onChange={(e) => setTermoBusca(e.target.value)}
       />
@@ -212,11 +212,86 @@ const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicit
   );
 };
 
+// Card de Curso com Moldura 1x1
+const CursoCard = ({ curso, onSolicitarCurso }) => (
+  <div className="card-item card-highlight card-curso">
+    {curso.tag && <div className="card-tag">{curso.tag}</div>}
+
+    {curso.imagem && (
+      <div className="card-media card-media-1x1">
+        <img src={curso.imagem} alt={curso.nome} className="card-img-1x1" />
+        <div className="card-media-overlay"></div>
+      </div>
+    )}
+
+    <div className="card-body">
+      <h3 className="card-title">{curso.nome}</h3>
+      <p className="card-description">{curso.descricao}</p>
+    </div>
+
+    <div className="card-footer">
+      <div className="price-container">
+        <span className="price-symbol">{CONFIG_SISTEMA.MOEDA}</span>
+        <span className="price-amount">{curso.preco}</span>
+      </div>
+      <button
+        className="btn-whatsapp"
+        onClick={() => onSolicitarCurso(curso)}
+      >
+        <span>Matricular pelo WhatsApp</span>
+      </button>
+    </div>
+  </div>
+);
+
+// Seção Cursos
+const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso }) => {
+  const listaCursos = CURSOS || [];
+  const cursosFiltrados = useMemo(() => {
+    return listaCursos.filter((curso) =>
+      curso.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
+      curso.descricao.toLowerCase().includes(termoBusca.toLowerCase())
+    );
+  }, [termoBusca, listaCursos]);
+
+  return (
+    <>
+      <BarraBusca 
+        termoBusca={termoBusca} 
+        setTermoBusca={setTermoBusca} 
+        placeholder="Procure por um curso específico..." 
+      />
+
+      <section className="grid-section">
+        {cursosFiltrados.length === 0 ? (
+          <div className="empty-results">
+            <h3>Nenhum curso encontrado</h3>
+            <p>Tente buscar por outro termo.</p>
+            <button className="btn-reset" onClick={() => setTermoBusca("")}>
+              Limpar Busca
+            </button>
+          </div>
+        ) : (
+          <div className="services-grid">
+            {cursosFiltrados.map((curso) => (
+              <CursoCard
+                key={curso.id}
+                curso={curso}
+                onSolicitarCurso={onSolicitarCurso}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+    </>
+  );
+};
+
 // Depoimentos
 const DepoimentosSection = () => (
   <section className="depoimentos-section">
     <h2 className="section-title">Depoimentos & Relatos</h2>
-    <p className="section-subtitle">Confira o retorno e os resultados de quem já realizou uma consulta ou ritual</p>
+    <p className="section-subtitle">Confira o retorno e os resultados de quem já realizou uma consulta, ritual ou curso</p>
     <div className="depoimentos-grid">
       {DEPOIMENTOS?.map((dep) => (
         <div key={dep.id} className="depoimento-card">
@@ -260,7 +335,28 @@ const FAQSection = () => {
 const ModalAtendimento = ({ modalItem, onClose, onConfirm }) => {
   if (!modalItem) return null;
 
-  const { servico, idx } = modalItem;
+  const { servico, idx, isCurso } = modalItem;
+
+  if (isCurso) {
+    return (
+      <div className="modal-overlay" onClick={onClose}>
+        <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+          <button className="modal-close" onClick={onClose}>✕</button>
+          <h3 className="modal-title">Inscrição no Curso</h3>
+          <p className="modal-desc">Você será redirecionado(a) para o WhatsApp para garantir sua vaga:</p>
+          <div className="modal-summary">
+            <strong>{servico.nome}</strong>
+            <span className="modal-price">Valor: {CONFIG_SISTEMA.MOEDA} {servico.preco}</span>
+          </div>
+          <div className="modal-actions">
+            <button className="btn-cancel" onClick={onClose}>Cancelar</button>
+            <button className="btn-confirm" onClick={() => onConfirm(servico, null, true)}>Ir para o WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const isVar = servico.temVariantes;
   const opc = isVar && servico.variantes ? servico.variantes[idx] : null;
 
@@ -277,7 +373,7 @@ const ModalAtendimento = ({ modalItem, onClose, onConfirm }) => {
         </div>
         <div className="modal-actions">
           <button className="btn-cancel" onClick={onClose}>Cancelar</button>
-          <button className="btn-confirm" onClick={() => onConfirm(servico, idx)}>Ir para o WhatsApp</button>
+          <button className="btn-confirm" onClick={() => onConfirm(servico, idx, false)}>Ir para o WhatsApp</button>
         </div>
       </div>
     </div>
@@ -303,19 +399,23 @@ export default function App() {
     );
   }, [termoBusca, listaServicos]);
 
-  const dispararWhatsApp = (servico, indexVar) => {
-    let detalhe = servico.nome;
-    if (servico.temVariantes && servico.variantes) {
-      const v = servico.variantes[indexVar || 0];
-      detalhe = `${servico.nome} — [${v?.label}] (Valor: ${CONFIG_SISTEMA.MOEDA} ${v?.preco})`;
+  const dispararWhatsApp = (item, indexVar, isCurso = false) => {
+    let mensagemText = "";
+
+    if (isCurso) {
+      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Gostaria de me matricular no curso: ${item.nome} (Valor: ${CONFIG_SISTEMA.MOEDA} ${item.preco}).`;
     } else {
-      detalhe = `${servico.nome} (Valor: ${CONFIG_SISTEMA.MOEDA} ${servico.preco})`;
+      let detalhe = item.nome;
+      if (item.temVariantes && item.variantes) {
+        const v = item.variantes[indexVar || 0];
+        detalhe = `${item.nome} — [${v?.label}] (Valor: ${CONFIG_SISTEMA.MOEDA} ${v?.preco})`;
+      } else {
+        detalhe = `${item.nome} (Valor: ${CONFIG_SISTEMA.MOEDA} ${item.preco})`;
+      }
+      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Gostaria de agendar/solicitar informações sobre: ${detalhe}.`;
     }
 
-    const mensagem = encodeURIComponent(
-      `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Gostaria de agendar/solicitar informações sobre: ${detalhe}.`
-    );
-
+    const mensagem = encodeURIComponent(mensagemText);
     window.open(`https://wa.me/${CONFIG_SISTEMA.WHATSAPP_NUMERO}?text=${mensagem}`, "_blank");
     setModalItem(null);
   };
@@ -332,9 +432,15 @@ export default function App() {
       <nav className="nav-tabs-container">
         <button
           className={`nav-tab ${abaAtiva === "servicos" ? "active" : ""}`}
-          onClick={() => setAbaAtiva("servicos")}
+          onClick={() => { setAbaAtiva("servicos"); setTermoBusca(""); }}
         >
           Serviços
+        </button>
+        <button
+          className={`nav-tab ${abaAtiva === "cursos" ? "active" : ""}`}
+          onClick={() => { setAbaAtiva("cursos"); setTermoBusca(""); }}
+        >
+          Cursos
         </button>
         <button
           className={`nav-tab ${abaAtiva === "depoimentos" ? "active" : ""}`}
@@ -366,13 +472,21 @@ export default function App() {
                       servico={servico}
                       varianteSelecionada={variantesState[servico.id]}
                       onSelectVariante={handleSelectVariante}
-                      onSolicitar={(s, idx) => setModalItem({ servico: s, idx })}
+                      onSolicitar={(s, idx) => setModalItem({ servico: s, idx, isCurso: false })}
                     />
                   ))}
                 </div>
               )}
             </section>
           </>
+        )}
+
+        {abaAtiva === "cursos" && (
+          <CursosSection 
+            termoBusca={termoBusca} 
+            setTermoBusca={setTermoBusca} 
+            onSolicitarCurso={(curso) => setModalItem({ servico: curso, idx: null, isCurso: true })}
+          />
         )}
 
         {abaAtiva === "depoimentos" && (
