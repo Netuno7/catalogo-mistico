@@ -155,32 +155,22 @@ const BarraBusca = ({ termoBusca, setTermoBusca, placeholder }) => (
   </section>
 );
 
-// Card de Serviço
+// Card de Serviço (Apenas Foto 1x1 em destaque e Botão)
 const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicitar }) => {
   const isVariante = servico.temVariantes;
   const idxAtual = varianteSelecionada || 0;
-  const precoExibido = isVariante
-    ? servico.variantes[idxAtual]?.preco
-    : servico.preco;
 
   return (
     <div className={`card-item ${servico.destaque ? "card-highlight" : ""}`}>
-      {servico.tag && <div className="card-tag">{servico.tag}</div>}
-
       {servico.imagem && (
-        <div className="card-media">
-          <img src={servico.imagem} alt={servico.nome} className="card-img" />
-          <div className="card-media-overlay"></div>
+        <div className="card-media card-media-1x1">
+          <img src={servico.imagem} alt={servico.nome} className="card-img-1x1" />
         </div>
       )}
 
-      <div className="card-body">
-        <h3 className="card-title">{servico.nome}</h3>
-        <p className="card-description">{servico.descricao}</p>
-
-        {isVariante && servico.variantes && (
-          <div className="variant-box">
-            <label className="variant-label">Escolha a opção / perguntas:</label>
+      {isVariante && servico.variantes && (
+        <div className="card-body" style={{ padding: '6px' }}>
+          <div className="variant-box" style={{ margin: 0 }}>
             <select
               className="variant-select"
               value={idxAtual}
@@ -193,16 +183,13 @@ const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicit
               ))}
             </select>
           </div>
-        )}
-      </div>
-
-      <div className="card-footer">
-        <div className="price-container">
-          <span className="price-symbol">{CONFIG_SISTEMA.MOEDA}</span>
-          <span className="price-amount">{precoExibido}</span>
         </div>
+      )}
+
+      <div className="card-footer" style={{ borderTop: 'none', padding: '6px' }}>
         <button
           className="btn-whatsapp"
+          style={{ width: '100%' }}
           onClick={() => onSolicitar(servico, idxAtual)}
         >
           <span>Solicitar Atendimento</span>
@@ -212,30 +199,19 @@ const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicit
   );
 };
 
-// Card de Curso com Moldura 1x1
+// Card de Curso (Apenas Foto 1x1 em destaque e Botão)
 const CursoCard = ({ curso, onSolicitarCurso }) => (
   <div className="card-item card-highlight card-curso">
-    {curso.tag && <div className="card-tag">{curso.tag}</div>}
-
     {curso.imagem && (
       <div className="card-media card-media-1x1">
         <img src={curso.imagem} alt={curso.nome} className="card-img-1x1" />
-        <div className="card-media-overlay"></div>
       </div>
     )}
 
-    <div className="card-body">
-      <h3 className="card-title">{curso.nome}</h3>
-      <p className="card-description">{curso.descricao}</p>
-    </div>
-
-    <div className="card-footer">
-      <div className="price-container">
-        <span className="price-symbol">{CONFIG_SISTEMA.MOEDA}</span>
-        <span className="price-amount">{curso.preco}</span>
-      </div>
+    <div className="card-footer" style={{ borderTop: 'none', padding: '6px' }}>
       <button
         className="btn-whatsapp"
+        style={{ width: '100%' }}
         onClick={() => onSolicitarCurso(curso)}
       >
         <span>Matricular pelo WhatsApp</span>
@@ -428,8 +404,8 @@ export default function App() {
       {/* Banner de Destaque Místico Decorado */}
       <DestaqueInicial />
 
-      {/* Navegação de Abas */}
-      <nav className="nav-tabs-container">
+      {/* Navegação de Abas Fixa */}
+      <nav className="nav-tabs-container sticky-tabs">
         <button
           className={`nav-tab ${abaAtiva === "servicos" ? "active" : ""}`}
           onClick={() => { setAbaAtiva("servicos"); setTermoBusca(""); }}
@@ -444,7 +420,7 @@ export default function App() {
         </button>
         <button
           className={`nav-tab ${abaAtiva === "depoimentos" ? "active" : ""}`}
-          onClick={() => setAbaAtiva("depoimentos")}
+          onClick={() => { setAbaAtiva("depoimentos"); }}
         >
           Depoimentos
         </button>

@@ -6,3 +6,71 @@
     color: #E5E5E5;
   }
 }
+
+/* ========================================================
+   GRELHA DE ANÚNCIOS (2 COLUNAS NO MOBILE)
+   ======================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 anúncios lado a lado no telemóvel */
+  gap: 8px;
+  padding: 4px 0;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    gap: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ========================================================
+   ESTILO DO CARD E IMAGEM 1x1 SEM MANCHAS/FUNDO ESCURO
+   ======================================================== */
+.card-item {
+  background-color: #111111;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-media-1x1 {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força a proporção 1x1 quadrada exata */
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+}
+
+.card-img-1x1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantém o destaque sem distorcer */
+  display: block;
+}
+
+/* ========================================================
+   BARRA DE ABAS FIXA NO TOPO
+   ======================================================== */
+.sticky-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

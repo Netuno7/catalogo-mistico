@@ -1,4 +1,4 @@
-// 1. Imports das Imagens Gerais
+// 1. Imports das Imagens de Serviços (1 ao 32)
 import img1 from '../assets/1.png';
 import img2 from '../assets/2.png';
 import img3 from '../assets/3.png';
@@ -13,6 +13,22 @@ import img12 from '../assets/12.png';
 import img14 from '../assets/14.png';
 import img15 from '../assets/15.png';
 import img16 from '../assets/16.png';
+import img17 from '../assets/17.png';
+import img18 from '../assets/18.png';
+import img19 from '../assets/19.png';
+import img20 from '../assets/20.png';
+import img21 from '../assets/21.png';
+import img22 from '../assets/22.png';
+import img23 from '../assets/23.png';
+import img24 from '../assets/24.png';
+import img25 from '../assets/25.png';
+import img26 from '../assets/26.png';
+import img27 from '../assets/27.png';
+import img28 from '../assets/28.png';
+import img29 from '../assets/29.png';
+import img30 from '../assets/30.png';
+import img31 from '../assets/31.png';
+import img32 from '../assets/32.png';
 
 // Imagem em Destaque Promoção Mês de Outubro (1x1)
 import imgDestaque from '../assets/outubro.jpeg';
@@ -86,8 +102,9 @@ export const CONFIG_SISTEMA = {
 };
 
 export const CATEGORIAS_SERVICOS = [
+  "Todos",
   "Consultas & Oráculos",
-  "Amooor & União",
+  "Trabalhos Amorosos",
   "Abertura de Caminhos",
   "Limpeza & Proteção",
   "Alta Magia Espiritual"
@@ -98,11 +115,9 @@ export const SERVICOS = [
     id: "oraculo-exu-pombagira",
     nome: "Oráculo de Exu & Pomba Gira",
     categoria: "Consultas & Oráculos",
-    descricao: "Orientação direta na força da Esquerda para cortar ilusões, revelar verdades e indicar caminhos.",
     imagem: imgBaralhoExu,
     temVariantes: true,
     destaque: true,
-    tag: "Alta Força",
     variantes: [
       { idVar: "e1", label: "01 Pergunta Objetiva", preco: "47,00" },
       { idVar: "e2", label: "02 Perguntas Objetivas", preco: "87,00" },
@@ -115,11 +130,9 @@ export const SERVICOS = [
     id: "oraculo-maria-padilha",
     nome: "Consultas com Maria Padilha",
     categoria: "Consultas & Oráculos",
-    descricao: "Leitura profunda, aconselhamento sentimental e revelações sob a regência da Rainha Maria Padilha.",
     imagem: imgBaralhoPadilha,
     temVariantes: true,
     destaque: true,
-    tag: "Recomendado",
     variantes: [
       { idVar: "p1", label: "Leitura Completa Gravada", preco: "777,00" },
       { idVar: "p2", label: "Consulta Presencial Reservada", preco: "1.777,00" }
@@ -129,165 +142,61 @@ export const SERVICOS = [
     id: "oraculo-exu-lucifer",
     nome: "Jogo Completo Exu Lúcifer",
     categoria: "Consultas & Oráculos",
-    descricao: "Consulta de alta força transformadora e direcionamento supremo com a regência e energia de Exu Lúcifer.",
     imagem: imgBaralhoLucifer,
     temVariantes: false,
     preco: "666,00"
   },
-  {
-    id: 1,
-    nome: "Broxamento Masculino",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Trabalho de amarração de desejo: impede que a pessoa sinta atração física por terceiros, focando-a no(a) solicitante.",
-    preco: "999,00",
-    imagem: img1,
-    temVariantes: false
-  },
-  {
-    id: 2,
-    nome: "Broxamento Feminino",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Impede o interesse e a atração da pessoa por outras pessoas, direcionando a paixão para o(a) parceiro(a).",
-    preco: "999,00",
-    imagem: img2,
-    temVariantes: false
-  },
-  {
-    id: 3,
-    nome: "Sigidi",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Ritual ancestral de alta intensidade para submissão, domínio amoroso, paixão incontrolável e atração extrema.",
-    preco: "3.999,00",
-    imagem: img3,
-    destaque: true,
-    tag: "Alta Intensidade",
-    temVariantes: false
-  },
-  {
-    id: 4,
-    nome: "Afastamento de Rival",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Corte imediato de energias e afastamento de terceiros que atrapalham o seu relacionamento ou sucesso profissional.",
-    preco: "1.199,00",
-    imagem: img4,
-    temVariantes: false
-  },
-  {
-    id: 6,
-    nome: "Amarração Amorosa Com Coração De Boi",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Ritual poderoso focado em criar saudades intensas, união afetiva, submissão e o retorno rápido da pessoa amada.",
-    preco: "1.199,00",
-    imagem: img6,
-    temVariantes: false
-  },
-  {
-    id: 7,
-    nome: "Tormenta Da Mente",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Atua nos pensamentos da pessoa amada, fazendo com que ela pense, lembre e busque você constantemente.",
-    preco: "1.999,00",
-    imagem: img7,
-    temVariantes: false
-  },
-  {
-    id: 8,
-    nome: "Sigidi De Prosperidade",
-    categoria: "Abertura de Caminhos",
-    descricao: "Abertura de caminhos financeiros, desbloqueio de prosperidade, atração de clientes e expansão de negócios.",
-    preco: "2.999,00",
-    imagem: img8,
-    temVariantes: false
-  },
-  {
-    id: 9,
-    nome: "Obsessão Amorosa",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Magnetismo de atração profunda: desperta o desejo ininterrupto, paixão ardente e busca constante.",
-    preco: "4.500,00",
-    imagem: img9,
-    temVariantes: false
-  },
-  {
-    id: 10,
-    nome: "Chora Nos Meus Pés",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Indução de arrependimento, carinho, submissão afetiva e necessidade da sua presença na vida da pessoa.",
-    preco: "1.000,00",
-    imagem: img10,
-    temVariantes: false
-  },
-  {
-    id: 11,
-    nome: "Ritual Da Saúde e Purificação",
-    categoria: "Limpeza & Proteção",
-    descricao: "Limpeza energética, alinhamento dos chakras, remoção de cargas negativas, ansiedade e restauração da vitalidade.",
-    preco: "666,00",
-    imagem: img11,
-    temVariantes: false
-  },
-  {
-    id: 12,
-    nome: "União de Laços",
-    categoria: "Amooor & União",
-    descricao: "Harmonização de casais, fortalecimento da cumplicidade, paciência, diálogo e carinho no relacionamento.",
-    preco: "999,00",
-    imagem: img12,
-    temVariantes: false
-  },
-  {
-    id: 14,
-    nome: "Limpeza e Quebra de Demanda",
-    categoria: "Limpeza & Proteção",
-    descricao: "Remoção profunda de cargas negativas, inveja, feitiços e quebra de demandas para purificar seus caminhos.",
-    preco: "777,00",
-    imagem: img14,
-    temVariantes: false
-  },
-  {
-    id: 15,
-    nome: "Adoçamento Amoroso",
-    categoria: "Amooor & União",
-    descricao: "Atrito e brigas zeradas: adoça os sentimentos, traz carinho, paciência e aproximação afetiva.",
-    preco: "377,00",
-    imagem: img15,
-    temVariantes: false
-  },
-  {
-    id: 16,
-    nome: "Ritual de Submissão",
-    categoria: "Alta Magia Espiritual",
-    descricao: "Trabalho de alta intensidade focado em domínio, respeito, flexibilidade e submissão das vontades da pessoa.",
-    preco: "2.199,00",
-    imagem: img16,
-    temVariantes: false
-  }
+  // Serviços do 1 ao 32
+  { id: 1, nome: "Serviço 1", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img1, temVariantes: false },
+  { id: 2, nome: "Serviço 2", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img2, temVariantes: false },
+  { id: 3, nome: "Serviço 3", categoria: "Trabalhos Amorosos", preco: "3.999,00", imagem: img3, temVariantes: false },
+  { id: 4, nome: "Serviço 4", categoria: "Trabalhos Amorosos", preco: "1.199,00", imagem: img4, temVariantes: false },
+  { id: 6, nome: "Serviço 6", categoria: "Trabalhos Amorosos", preco: "1.199,00", imagem: img6, temVariantes: false },
+  { id: 7, nome: "Serviço 7", categoria: "Trabalhos Amorosos", preco: "1.999,00", imagem: img7, temVariantes: false },
+  { id: 8, nome: "Serviço 8", categoria: "Abertura de Caminhos", preco: "2.999,00", imagem: img8, temVariantes: false },
+  { id: 9, nome: "Serviço 9", categoria: "Trabalhos Amorosos", preco: "4.500,00", imagem: img9, temVariantes: false },
+  { id: 10, nome: "Serviço 10", categoria: "Alta Magia Espiritual", preco: "1.000,00", imagem: img10, temVariantes: false },
+  { id: 11, nome: "Serviço 11", categoria: "Limpeza & Proteção", preco: "666,00", imagem: img11, temVariantes: false },
+  { id: 12, nome: "Serviço 12", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img12, temVariantes: false },
+  { id: 14, nome: "Serviço 14", categoria: "Limpeza & Proteção", preco: "777,00", imagem: img14, temVariantes: false },
+  { id: 15, nome: "Serviço 15", categoria: "Trabalhos Amorosos", preco: "377,00", imagem: img15, temVariantes: false },
+  { id: 16, nome: "Serviço 16", categoria: "Trabalhos Amorosos", preco: "2.199,00", imagem: img16, temVariantes: false },
+  { id: 17, nome: "Serviço 17", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img17, temVariantes: false },
+  { id: 18, nome: "Serviço 18", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img18, temVariantes: false },
+  { id: 19, nome: "Serviço 19", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img19, temVariantes: false },
+  { id: 20, nome: "Serviço 20", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img20, temVariantes: false },
+  { id: 21, nome: "Serviço 21", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img21, temVariantes: false },
+  { id: 22, nome: "Serviço 22", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img22, temVariantes: false },
+  { id: 23, nome: "Serviço 23", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img23, temVariantes: false },
+  { id: 24, nome: "Serviço 24", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img24, temVariantes: false },
+  { id: 25, nome: "Serviço 25", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img25, temVariantes: false },
+  { id: 26, nome: "Serviço 26", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img26, temVariantes: false },
+  { id: 27, nome: "Serviço 27", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img27, temVariantes: false },
+  { id: 28, nome: "Serviço 28", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img28, temVariantes: false },
+  { id: 29, nome: "Serviço 29", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img29, temVariantes: false },
+  { id: 30, nome: "Serviço 30", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img30, temVariantes: false },
+  { id: 31, nome: "Serviço 31", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img31, temVariantes: false },
+  { id: 32, nome: "Serviço 32", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img32, temVariantes: false }
 ];
 
 export const CURSOS = [
   {
     id: "curso-1",
     nome: "Iniciação à Magia & Oráculos",
-    descricao: "Aprenda os fundamentos da cartomancia e interpretação mística com direcionamento prático e fundamentado.",
     imagem: imgCurso1,
-    preco: "199,00",
-    tag: "Exclusivo"
+    preco: "199,00"
   },
   {
     id: "curso-2",
     nome: "Desenvolvimento de Médium & Firmezas",
-    descricao: "Técnicas de firmeza espiritual, proteção de altar, manipulação de velas e alinhamento de energia ancestral.",
     imagem: imgCurso2,
-    preco: "497,00",
-    tag: "Avançado"
+    preco: "497,00"
   },
   {
     id: "curso-3",
     nome: "Consagração & Alta Magia Espiritual",
-    descricao: "Curso completo focado no domínio de rituais, canalização de forças espirituais e consagrações de alta intensidade.",
     imagem: imgCurso3,
-    preco: "797,00",
-    tag: "Formação"
+    preco: "797,00"
   }
 ];
 
@@ -310,7 +219,6 @@ export const PERGUNTAS_FREQUENTES = [
   }
 ];
 
-// Array de Depoimentos Atualizado com os 19 Ficheiros
 export const DEPOIMENTOS = [
   { id: 1, imagem: dp1, alt: "Depoimento 1" },
   { id: 2, imagem: dp2, alt: "Depoimento 2" },
@@ -329,4 +237,6 @@ export const DEPOIMENTOS = [
   { id: 15, imagem: dp15, alt: "Depoimento 15" },
   { id: 16, imagem: dp16, alt: "Depoimento 16" },
   { id: 17, imagem: dp17, alt: "Depoimento 17" },
+  { id: 18, imagem: dp18, alt: "Depoimento 18" },
+  { id: 19, imagem: dp19, alt: "Depoimento 19" }
 ];
