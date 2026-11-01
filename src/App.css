@@ -91,7 +91,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   position: relative;
   z-index: 2;
   max-width: 850px;
-  animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .badge-gold {
@@ -200,18 +199,9 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
     0 15px 35px rgba(0, 0, 0, 0.9),
     0 0 25px rgba(167, 29, 42, 0.4),
     inset 0 0 15px rgba(212, 175, 55, 0.2);
-  transition: all 0.4s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.destaque-banner:hover {
-  transform: translateY(-4px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(217, 35, 56, 0.6),
-    inset 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
 .destaque-img {
@@ -219,17 +209,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   height: 100%;
   object-fit: contain;
   display: block;
-}
-
-.destaque-overlay-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: radial-gradient(circle at center, transparent 65%, rgba(7, 4, 6, 0.5) 100%);
-  border-radius: 20px;
 }
 
 .btn-promo-whatsapp {
@@ -253,25 +232,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
 .btn-promo-whatsapp:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 25px rgba(217, 35, 56, 0.6);
-}
-
-.destaque-decor-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60%;
-  margin-top: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-  position: relative;
-}
-
-.decor-diamond {
-  color: var(--gold-primary);
-  font-size: 0.7rem;
-  background: var(--bg-dark);
-  padding: 0 8px;
-  position: absolute;
 }
 
 /* Navigation Tabs */
@@ -408,7 +368,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   border-radius: 50px;
 }
 
-/* Moldura Padrão dos Serviços */
 .card-media {
   position: relative;
   width: 100%;
@@ -423,7 +382,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   transition: transform 0.6s ease;
 }
 
-/* Moldura Exclusiva 1x1 dos Cursos */
 .card-media-1x1 {
   height: auto !important;
   aspect-ratio: 1 / 1;
@@ -438,15 +396,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   height: 100%;
   object-fit: contain;
   display: block;
-}
-
-.card-media-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent 30%, var(--bg-dark) 100%);
 }
 
 .card-body {
@@ -537,6 +486,7 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .btn-whatsapp:hover {
@@ -544,9 +494,11 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   box-shadow: 0 6px 22px rgba(217, 35, 56, 0.5);
 }
 
-/* Depoimentos */
+/* ---------------------------------------------------- */
+/* DEPOIMENTOS EM TELA CHEIA VERTICAL (ESTILO REELS)    */
+/* ---------------------------------------------------- */
 .depoimentos-section {
-  padding: 10px 0;
+  padding: 0;
 }
 
 .depoimentos-grid {
@@ -690,103 +642,6 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   fill: currentColor;
 }
 
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.modal-card {
-  position: relative;
-  background: #14070a;
-  border: 1px solid var(--red-bright);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 480px;
-  width: 100%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.modal-title {
-  font-size: 1.4rem;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-.modal-desc {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-}
-
-.modal-summary {
-  background: rgba(255, 255, 255, 0.03);
-  border-left: 3px solid var(--red-bright);
-  padding: 14px;
-  margin-bottom: 22px;
-  border-radius: 0 10px 10px 0;
-}
-
-.modal-summary strong {
-  display: block;
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.modal-price {
-  display: block;
-  margin-top: 6px;
-  font-weight: 700;
-  color: var(--gold-light);
-}
-
-.modal-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-cancel, .btn-confirm {
-  flex: 1;
-  padding: 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-cancel {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.btn-confirm {
-  background: var(--red-gradient);
-  border: 1px solid var(--gold-primary);
-  color: #fff;
-}
-
 /* Footer */
 .footer-site {
   margin-top: auto;
@@ -815,7 +670,9 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   margin-top: 25px;
 }
 
-/* Regras Responsivas para Celular (2 Cards por linha) */
+/* ---------------------------------------------------------------- */
+/* REGRAS RESPONSIVAS PARA MÓVEL (2 CARDS POR LINHA + REELS FULL)   */
+/* ---------------------------------------------------------------- */
 @media (max-width: 768px) {
   .app-wrapper {
     padding: 0 6px;
@@ -960,9 +817,36 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
     font-size: 0.75rem;
   }
 
+  /* DEPOIMENTOS EM TELA CHEIA VERTICAL (1 POR TELA NO MÓVEL) */
   .depoimentos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .depoimento-card {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .depoimento-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .social-grid {
@@ -973,10 +857,5 @@ h1, h2, h3, h4, .badge-gold, .price-amount, .nav-tab, .promo-badge, .btn-promo-w
   .social-card {
     justify-content: center;
     padding: 10px;
-  }
-
-  .modal-card {
-    width: 95%;
-    padding: 18px 12px;
   }
 }

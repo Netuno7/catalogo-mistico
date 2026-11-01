@@ -263,7 +263,7 @@ const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso }) => {
   );
 };
 
-// Depoimentos
+// Depoimentos (Ajustado para formato vertical de tela cheia / Reels no mobile)
 const DepoimentosSection = () => (
   <section className="depoimentos-section">
     <h2 className="section-title">Depoimentos & Relatos</h2>
