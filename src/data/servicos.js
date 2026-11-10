@@ -1,4 +1,4 @@
-// 1. Imports das Imagens de Serviços (Todas disponíveis na pasta)
+// 1. Imports das Imagens de Serviços (0 a 33 e os Oráculos)
 import img0 from '../assets/0.jpeg';
 import img1 from '../assets/1.jpeg';
 import img2 from '../assets/2.jpeg';
@@ -32,20 +32,20 @@ import img31 from '../assets/31.png';
 import img32 from '../assets/32.png';
 import img33 from '../assets/33.jpeg';
 
-// Imagem em Destaque Promoção Mês de Outubro (1x1)
+// Imagem em Destaque Promoção Mês de Outubro
 import imgDestaque from '../assets/destaque-do-mes.png';
 
-// Imagens dos Baralhos/Oráculos
+// Imagens dos 3 Oráculos (Iniciais)
 import imgBaralhoExu from '../assets/baralho-exu.jpeg';
 import imgBaralhoLucifer from '../assets/baralho-lucifer.jpeg';
 import imgBaralhoPadilha from '../assets/baralho-padilha.jpeg';
 
-// Imagens dos Cursos (1x1)
+// Cursos
 import imgCurso1 from '../assets/curso1.jpeg';
 import imgCurso2 from '../assets/curso2.jpeg';
 import imgCurso3 from '../assets/curso3.jpeg';
 
-// Depoimentos / Prints (dp1.png até dp20.png)
+// Depoimentos
 import dp1 from '../assets/depoimentos/dp1.png';
 import dp2 from '../assets/depoimentos/dp2.png';
 import dp3 from '../assets/depoimentos/dp3.png';
@@ -67,39 +67,17 @@ import dp18 from '../assets/depoimentos/dp18.png';
 import dp19 from '../assets/depoimentos/dp19.png';
 import dp20 from '../assets/depoimentos/dp20.png';
 
-// 2. Configurações Gerais do Sistema
 export const CONFIG_SISTEMA = {
   NOME_SACERDOTISA: "Sacerdotisa Vênus",
   SUBTITULO: "Direcionamento espiritual com clareza, ética e verdade",
   WHATSAPP_NUMERO: "5522998763590",
   IMAGEM_DESTAQUE: imgDestaque,
   TEXTO_RODAPE: "Atendimentos com sigilo absoluto, ética e direcionamento de alta força espiritual.",
-  MENSAGEM_BOAS_VINDAS: "Seja bem-vindo(a) ao portal de direcionamento espiritual e alta magia.",
   REDES_SOCIAIS: [
-    {
-      nome: "Instagram",
-      handle: "@sacerdotisavenus77",
-      link: "https://www.instagram.com/sacerdotisavenus77?stkn=dmxsNzJ3c29zbjg3",
-      classe: "instagram"
-    },
-    {
-      nome: "YouTube",
-      handle: "@sacerdotisavenus",
-      link: "https://youtube.com/@sacerdotisavenus?si=81CJ5HFvfncWrS6B",
-      classe: "youtube"
-    },
-    {
-      nome: "TikTok",
-      handle: "@bruxadelebara",
-      link: "https://www.tiktok.com/@bruxadelebara?_r=1&_t=ZS-9A7loHjwjUf",
-      classe: "tiktok"
-    },
-    {
-      nome: "Facebook",
-      handle: "Sacerdotisa Vênus",
-      link: "https://www.facebook.com/share/1BjjXvKBNi/",
-      classe: "facebook"
-    }
+    { nome: "Instagram", handle: "@sacerdotisavenus77", link: "https://www.instagram.com/sacerdotisavenus77?stkn=dmxsNzJ3c29zbjg3", classe: "instagram" },
+    { nome: "YouTube", handle: "@sacerdotisavenus", link: "https://youtube.com/@sacerdotisavenus?si=81CJ5HFvfncWrS6B", classe: "youtube" },
+    { nome: "TikTok", handle: "@bruxadelebara", link: "https://www.tiktok.com/@bruxadelebara?_r=1&_t=ZS-9A7loHjwjUf", classe: "tiktok" },
+    { nome: "Facebook", handle: "Sacerdotisa Vênus", link: "https://www.facebook.com/share/1BjjXvKBNi/", classe: "facebook" }
   ]
 };
 
@@ -112,57 +90,46 @@ export const CATEGORIAS_SERVICOS = [
   "Alta Magia Espiritual"
 ];
 
+// Lista de serviços com os nomes exatos extraídos das imagens da sequência
 export const SERVICOS = [
-  {
-    id: "oraculo-exu-pombagira",
-    nome: "Oráculo de Exu & Pomba Gira",
-    categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoExu
-  },
-  {
-    id: "oraculo-maria-padilha",
-    nome: "Consultas com Maria Padilha",
-    categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoPadilha
-  },
-  {
-    id: "oraculo-exu-lucifer",
-    nome: "Jogo Completo Exu Lúcifer",
-    categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoLucifer
-  },
-  { id: 0, nome: "Serviço 0", categoria: "Trabalhos Amorosos", imagem: img0 },
-  { id: 1, nome: "Serviço 1", categoria: "Trabalhos Amorosos", imagem: img1 },
-  { id: 2, nome: "Serviço 2", categoria: "Trabalhos Amorosos", imagem: img2 },
-  { id: 3, nome: "Serviço 3", categoria: "Trabalhos Amorosos", imagem: img3 },
-  { id: 4, nome: "Serviço 4", categoria: "Trabalhos Amorosos", imagem: img4 },
-  { id: 5, nome: "Serviço 5", categoria: "Trabalhos Amorosos", imagem: img5 },
-  { id: 6, nome: "Serviço 6", categoria: "Trabalhos Amorosos", imagem: img6 },
-  { id: 7, nome: "Serviço 7", categoria: "Trabalhos Amorosos", imagem: img7 },
-  { id: 8, nome: "Serviço 8", categoria: "Abertura de Caminhos", imagem: img8 },
-  { id: 9, nome: "Serviço 9", categoria: "Trabalhos Amorosos", imagem: img9 },
-  { id: 10, nome: "Serviço 10", categoria: "Alta Magia Espiritual", imagem: img10 },
-  { id: 11, nome: "Serviço 11", categoria: "Limpeza & Proteção", imagem: img11 },
-  { id: 12, nome: "Serviço 12", categoria: "Trabalhos Amorosos", imagem: img12 },
-  { id: 13, nome: "Serviço 13", categoria: "Limpeza & Proteção", imagem: img13 },
-  { id: 14, nome: "Serviço 14", categoria: "Limpeza & Proteção", imagem: img14 },
-  { id: 16, nome: "Serviço 16", categoria: "Trabalhos Amorosos", imagem: img16 },
-  { id: 17, nome: "Serviço 17", categoria: "Alta Magia Espiritual", imagem: img17 },
-  { id: 18, nome: "Serviço 18", categoria: "Alta Magia Espiritual", imagem: img18 },
-  { id: 19, nome: "Serviço 19", categoria: "Alta Magia Espiritual", imagem: img19 },
-  { id: 20, nome: "Serviço 20", categoria: "Alta Magia Espiritual", imagem: img20 },
-  { id: 21, nome: "Serviço 21", categoria: "Alta Magia Espiritual", imagem: img21 },
-  { id: 22, nome: "Serviço 22", categoria: "Alta Magia Espiritual", imagem: img22 },
-  { id: 23, nome: "Serviço 23", categoria: "Alta Magia Espiritual", imagem: img23 },
-  { id: 24, nome: "Serviço 24", categoria: "Alta Magia Espiritual", imagem: img24 },
-  { id: 25, nome: "Serviço 25", categoria: "Alta Magia Espiritual", imagem: img25 },
-  { id: 26, nome: "Serviço 26", categoria: "Alta Magia Espiritual", imagem: img26 },
-  { id: 27, nome: "Serviço 27", categoria: "Alta Magia Espiritual", imagem: img27 },
-  { id: 28, nome: "Serviço 28", categoria: "Alta Magia Espiritual", imagem: img28 },
-  { id: 29, nome: "Serviço 29", categoria: "Alta Magia Espiritual", imagem: img29 },
-  { id: 31, nome: "Serviço 31", categoria: "Alta Magia Espiritual", imagem: img31 },
-  { id: 32, nome: "Serviço 32", categoria: "Alta Magia Espiritual", imagem: img32 },
-  { id: 33, nome: "Serviço 33", categoria: "Alta Magia Espiritual", imagem: img33 }
+  // As 3 primeiras (Oráculos)
+  { id: "orac-1", nome: "Oráculo de Exu & Pomba Gira", categoria: "Consultas & Oráculos", imagem: imgBaralhoExu },
+  { id: "orac-2", nome: "Consultas com Maria Padilha", categoria: "Consultas & Oráculos", imagem: imgBaralhoPadilha },
+  { id: "orac-3", nome: "Jogo Completo Exu Lúcifer", categoria: "Consultas & Oráculos", imagem: imgBaralhoLucifer },
+
+  // Sequência dos Anúncios baseada nas imagens enviados[cite: 2]
+  { id: 0, nome: "Obsessão Fatal na Força da Cabra", categoria: "Trabalhos Amorosos", imagem: img0 },
+  { id: 1, nome: "Ritual de Beleza e Atração", categoria: "Trabalhos Amorosos", imagem: img1 },
+  { id: 2, nome: "Limpeza com Banhos", categoria: "Limpeza & Proteção", imagem: img2 },
+  { id: 3, nome: "Restauração dos Laços Afetivos", categoria: "Trabalhos Amorosos", imagem: img3 },
+  { id: 4, nome: "Casamento Definitivo com Fogo", categoria: "Trabalhos Amorosos", imagem: img4 },
+  { id: 5, nome: "Afastamento de Rival", categoria: "Trabalhos Amorosos", imagem: img5 },
+  { id: 6, nome: "Trabalho para Saúde com Banho", categoria: "Limpeza & Proteção", imagem: img6 },
+  { id: 7, nome: "Casamento Definitivo com Cabra", categoria: "Trabalhos Amorosos", imagem: img7 },
+  { id: 8, nome: "Chora nos Meus Pés", categoria: "Trabalhos Amorosos", imagem: img8 },
+  { id: 9, nome: "Submissão com Pó de Pensamento", categoria: "Trabalhos Amorosos", imagem: img9 },
+  { id: 10, nome: "Amarração Amorosa", categoria: "Trabalhos Amorosos", imagem: img10 },
+  { id: 11, nome: "Tormento na Mente (Definitivo)", categoria: "Alta Magia Espiritual", imagem: img11 },
+  { id: 12, nome: "Tormento na Mente (6 Meses)", categoria: "Alta Magia Espiritual", imagem: img12 },
+  { id: 13, nome: "Promoção 3 Rituais em 1", categoria: "Alta Magia Espiritual", imagem: img13 },
+  { id: 14, nome: "Amarração com Coração de Boi", categoria: "Trabalhos Amorosos", imagem: img14 },
+  { id: 16, nome: "Submissão com Alta Magia", categoria: "Alta Magia Espiritual", imagem: img16 },
+  { id: 17, nome: "Amarração Alta Magia", categoria: "Alta Magia Espiritual", imagem: img17 },
+  { id: 18, nome: "Obsessão Fatal", categoria: "Trabalhos Amorosos", imagem: img18 },
+  { id: 19, nome: "Pacto Padilha", categoria: "Alta Magia Espiritual", imagem: img19 },
+  { id: 20, nome: "Pacto Alta Magia", categoria: "Alta Magia Espiritual", imagem: img20 },
+  { id: 21, nome: "Obsessão na Redes", categoria: "Trabalhos Amorosos", imagem: img21 },
+  { id: 22, nome: "Sigilo com Cabra", categoria: "Alta Magia Espiritual", imagem: img22 },
+  { id: 23, nome: "Obsessão com Cabra", categoria: "Trabalhos Amorosos", imagem: img23 },
+  { id: 24, nome: "Iniciação na Alta Magia", categoria: "Alta Magia Espiritual", imagem: img24 },
+  { id: 25, nome: "Mesa de Obsessão Fatal", categoria: "Alta Magia Espiritual", imagem: img25 },
+  { id: 26, nome: "Iniciação Alta Magia", categoria: "Alta Magia Espiritual", imagem: img26 },
+  { id: 27, nome: "Caldeirão dos Desejos - Ísis", categoria: "Alta Magia Espiritual", imagem: img27 },
+  { id: 28, nome: "Iniciação na Quimbanda", categoria: "Alta Magia Espiritual", imagem: img28 },
+  { id: 29, nome: "Abertura de Caminhos / Cura", categoria: "Abertura de Caminhos", imagem: img29 },
+  { id: 31, nome: "Mesa de Agradecimento - Pomba Gira", categoria: "Alta Magia Espiritual", imagem: img31 },
+  { id: 32, nome: "Ritual de Cura e Vínculos", categoria: "Limpeza & Proteção", imagem: img32 },
+  { id: 33, nome: "Aterramento de Amantes", categoria: "Trabalhos Amorosos", imagem: img33 }
 ];
 
 export const CURSOS = [
@@ -172,22 +139,10 @@ export const CURSOS = [
 ];
 
 export const PERGUNTAS_FREQUENTES = [
-  {
-    pergunta: "Como funcionam os atendimentos por vídeo ou áudio?",
-    resposta: "Após a confirmação da solicitação pelo WhatsApp, agendaremos o melhor horário para realizar a sua chamada ou o envio do material gravado com a leitura completa das suas cartas."
-  },
-  {
-    pergunta: "O sigilo das minhas informações é garantido?",
-    resposta: "Sim, 100% de sigilo absoluto. Seus dados, fotos e nomes jamais são compartilhados ou divulgados sob nenhuma hipótese."
-  },
-  {
-    pergunta: "Qual o prazo de envio para as tiragens gravadas?",
-    resposta: "O prazo padrão de envio é de até 24h a 48h úteis após a confirmação das informações necessárias para a tiragem."
-  },
-  {
-    pergunta: "Como sei qual é o ritual mais indicado para o meu caso?",
-    resposta: "Recomendamos sempre iniciar por uma Consulta ou Tiragem por Perguntas. Assim, as entidades revelam exatamente o diagnóstico do seu momento e o trabalho mais adequado."
-  }
+  { pergunta: "Como funcionam os atendimentos por vídeo ou áudio?", resposta: "Após a confirmação da solicitação pelo WhatsApp, agendaremos o melhor horário..." },
+  { pergunta: "O sigilo das minhas informações é garantido?", resposta: "Sim, 100% de sigilo absoluto. Seus dados e fotos jamais são compartilhados." },
+  { pergunta: "Qual o prazo de envio para as tiragens gravadas?", resposta: "O prazo padrão de envio é de até 24h a 48h úteis." },
+  { pergunta: "Como sei qual é o ritual mais indicado?", resposta: "Recomendamos iniciar por uma Consulta ou Tiragem por Perguntas." }
 ];
 
 export const DEPOIMENTOS = [
