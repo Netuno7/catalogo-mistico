@@ -1,8 +1,10 @@
-// 1. Imports das Imagens de Serviços (Apenas arquivos existentes)
+// 1. Imports das Imagens de Serviços (Todas disponíveis na pasta)
+import img0 from '../assets/0.jpeg';
 import img1 from '../assets/1.jpeg';
 import img2 from '../assets/2.jpeg';
 import img3 from '../assets/3.jpeg';
 import img4 from '../assets/4.jpeg';
+import img5 from '../assets/5.jpeg';
 import img6 from '../assets/6.jpeg';
 import img7 from '../assets/7.jpeg';
 import img8 from '../assets/8.jpeg';
@@ -10,6 +12,8 @@ import img9 from '../assets/9.jpeg';
 import img10 from '../assets/10.jpeg';
 import img11 from '../assets/11.jpeg';
 import img12 from '../assets/12.jpeg';
+import img13 from '../assets/13.jpeg';
+import img14 from '../assets/14.jpeg';
 import img16 from '../assets/16.png';
 import img17 from '../assets/17.png';
 import img18 from '../assets/18.png';
@@ -24,12 +28,12 @@ import img26 from '../assets/26.png';
 import img27 from '../assets/27.png';
 import img28 from '../assets/28.png';
 import img29 from '../assets/29.png';
-import img30 from '../assets/30.png';
 import img31 from '../assets/31.png';
 import img32 from '../assets/32.png';
+import img33 from '../assets/33.jpeg';
 
 // Imagem em Destaque Promoção Mês de Outubro (1x1)
-import imgDestaque from '../assets/outubro.jpeg';
+import imgDestaque from '../assets/destaque-do-mes.png';
 
 // Imagens dos Baralhos/Oráculos
 import imgBaralhoExu from '../assets/baralho-exu.jpeg';
@@ -41,7 +45,7 @@ import imgCurso1 from '../assets/curso1.jpeg';
 import imgCurso2 from '../assets/curso2.jpeg';
 import imgCurso3 from '../assets/curso3.jpeg';
 
-// Depoimentos / Prints (dp1.png até dp19.png)
+// Depoimentos / Prints (dp1.png até dp20.png)
 import dp1 from '../assets/depoimentos/dp1.png';
 import dp2 from '../assets/depoimentos/dp2.png';
 import dp3 from '../assets/depoimentos/dp3.png';
@@ -61,13 +65,13 @@ import dp16 from '../assets/depoimentos/dp16.png';
 import dp17 from '../assets/depoimentos/dp17.png';
 import dp18 from '../assets/depoimentos/dp18.png';
 import dp19 from '../assets/depoimentos/dp19.png';
+import dp20 from '../assets/depoimentos/dp20.png';
 
 // 2. Configurações Gerais do Sistema
 export const CONFIG_SISTEMA = {
   NOME_SACERDOTISA: "Sacerdotisa Vênus",
   SUBTITULO: "Direcionamento espiritual com clareza, ética e verdade",
   WHATSAPP_NUMERO: "5522998763590",
-  MOEDA: "R$",
   IMAGEM_DESTAQUE: imgDestaque,
   TEXTO_RODAPE: "Atendimentos com sigilo absoluto, ética e direcionamento de alta força espiritual.",
   MENSAGEM_BOAS_VINDAS: "Seja bem-vindo(a) ao portal de direcionamento espiritual e alta magia.",
@@ -113,91 +117,58 @@ export const SERVICOS = [
     id: "oraculo-exu-pombagira",
     nome: "Oráculo de Exu & Pomba Gira",
     categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoExu,
-    temVariantes: true,
-    destaque: true,
-    variantes: [
-      { idVar: "e1", label: "01 Pergunta Objetiva", preco: "47,00" },
-      { idVar: "e2", label: "02 Perguntas Objetivas", preco: "87,00" },
-      { idVar: "e3", label: "03 Perguntas Objetivas", preco: "137,00" },
-      { idVar: "e4", label: "05 Perguntas Objetivas", preco: "177,00" },
-      { idVar: "e5", label: "07 Perguntas Objetivas", preco: "177,00" }
-    ]
+    imagem: imgBaralhoExu
   },
   {
     id: "oraculo-maria-padilha",
     nome: "Consultas com Maria Padilha",
     categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoPadilha,
-    temVariantes: true,
-    destaque: true,
-    variantes: [
-      { idVar: "p1", label: "Leitura Completa Gravada", preco: "777,00" },
-      { idVar: "p2", label: "Consulta Presencial Reservada", preco: "1.777,00" }
-    ]
+    imagem: imgBaralhoPadilha
   },
   {
     id: "oraculo-exu-lucifer",
     nome: "Jogo Completo Exu Lúcifer",
     categoria: "Consultas & Oráculos",
-    imagem: imgBaralhoLucifer,
-    temVariantes: false,
-    preco: "666,00"
+    imagem: imgBaralhoLucifer
   },
-  { id: 1, nome: "Serviço 1", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img1, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 2, nome: "Serviço 2", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img2, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 3, nome: "Serviço 3", categoria: "Trabalhos Amorosos", preco: "3.999,00", imagem: img3, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 4, nome: "Serviço 4", categoria: "Trabalhos Amorosos", preco: "1.199,00", imagem: img4, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 6, nome: "Serviço 6", categoria: "Trabalhos Amorosos", preco: "1.199,00", imagem: img6, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 7, nome: "Serviço 7", categoria: "Trabalhos Amorosos", preco: "1.999,00", imagem: img7, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 8, nome: "Serviço 8", categoria: "Abertura de Caminhos", preco: "2.999,00", imagem: img8, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 9, nome: "Serviço 9", categoria: "Trabalhos Amorosos", preco: "4.500,00", imagem: img9, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 10, nome: "Serviço 10", categoria: "Alta Magia Espiritual", preco: "1.000,00", imagem: img10, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 11, nome: "Serviço 11", categoria: "Limpeza & Proteção", preco: "666,00", imagem: img11, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 12, nome: "Serviço 12", categoria: "Trabalhos Amorosos", preco: "999,00", imagem: img12, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 14, nome: "Serviço 14", categoria: "Limpeza & Proteção", preco: "777,00", imagem: img16, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 15, nome: "Serviço 15", categoria: "Trabalhos Amorosos", preco: "377,00", imagem: img16, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 16, nome: "Serviço 16", categoria: "Trabalhos Amorosos", preco: "2.199,00", imagem: img16, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 17, nome: "Serviço 17", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img17, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 18, nome: "Serviço 18", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img18, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 19, nome: "Serviço 19", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img19, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 20, nome: "Serviço 20", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img20, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 21, nome: "Serviço 21", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img21, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 22, nome: "Serviço 22", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img22, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 23, nome: "Serviço 23", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img23, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 24, nome: "Serviço 24", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img24, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 25, nome: "Serviço 25", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img25, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 26, nome: "Serviço 26", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img26, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 27, nome: "Serviço 27", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img27, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 28, nome: "Serviço 28", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img28, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 29, nome: "Serviço 29", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img29, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 30, nome: "Serviço 30", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img30, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 31, nome: "Serviço 31", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img31, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." },
-  { id: 32, nome: "Serviço 32", categoria: "Alta Magia Espiritual", preco: "199,00", imagem: img32, temVariantes: false, descricao: "Trabalho fundamentado com alta força espiritual." }
+  { id: 0, nome: "Serviço 0", categoria: "Trabalhos Amorosos", imagem: img0 },
+  { id: 1, nome: "Serviço 1", categoria: "Trabalhos Amorosos", imagem: img1 },
+  { id: 2, nome: "Serviço 2", categoria: "Trabalhos Amorosos", imagem: img2 },
+  { id: 3, nome: "Serviço 3", categoria: "Trabalhos Amorosos", imagem: img3 },
+  { id: 4, nome: "Serviço 4", categoria: "Trabalhos Amorosos", imagem: img4 },
+  { id: 5, nome: "Serviço 5", categoria: "Trabalhos Amorosos", imagem: img5 },
+  { id: 6, nome: "Serviço 6", categoria: "Trabalhos Amorosos", imagem: img6 },
+  { id: 7, nome: "Serviço 7", categoria: "Trabalhos Amorosos", imagem: img7 },
+  { id: 8, nome: "Serviço 8", categoria: "Abertura de Caminhos", imagem: img8 },
+  { id: 9, nome: "Serviço 9", categoria: "Trabalhos Amorosos", imagem: img9 },
+  { id: 10, nome: "Serviço 10", categoria: "Alta Magia Espiritual", imagem: img10 },
+  { id: 11, nome: "Serviço 11", categoria: "Limpeza & Proteção", imagem: img11 },
+  { id: 12, nome: "Serviço 12", categoria: "Trabalhos Amorosos", imagem: img12 },
+  { id: 13, nome: "Serviço 13", categoria: "Limpeza & Proteção", imagem: img13 },
+  { id: 14, nome: "Serviço 14", categoria: "Limpeza & Proteção", imagem: img14 },
+  { id: 16, nome: "Serviço 16", categoria: "Trabalhos Amorosos", imagem: img16 },
+  { id: 17, nome: "Serviço 17", categoria: "Alta Magia Espiritual", imagem: img17 },
+  { id: 18, nome: "Serviço 18", categoria: "Alta Magia Espiritual", imagem: img18 },
+  { id: 19, nome: "Serviço 19", categoria: "Alta Magia Espiritual", imagem: img19 },
+  { id: 20, nome: "Serviço 20", categoria: "Alta Magia Espiritual", imagem: img20 },
+  { id: 21, nome: "Serviço 21", categoria: "Alta Magia Espiritual", imagem: img21 },
+  { id: 22, nome: "Serviço 22", categoria: "Alta Magia Espiritual", imagem: img22 },
+  { id: 23, nome: "Serviço 23", categoria: "Alta Magia Espiritual", imagem: img23 },
+  { id: 24, nome: "Serviço 24", categoria: "Alta Magia Espiritual", imagem: img24 },
+  { id: 25, nome: "Serviço 25", categoria: "Alta Magia Espiritual", imagem: img25 },
+  { id: 26, nome: "Serviço 26", categoria: "Alta Magia Espiritual", imagem: img26 },
+  { id: 27, nome: "Serviço 27", categoria: "Alta Magia Espiritual", imagem: img27 },
+  { id: 28, nome: "Serviço 28", categoria: "Alta Magia Espiritual", imagem: img28 },
+  { id: 29, nome: "Serviço 29", categoria: "Alta Magia Espiritual", imagem: img29 },
+  { id: 31, nome: "Serviço 31", categoria: "Alta Magia Espiritual", imagem: img31 },
+  { id: 32, nome: "Serviço 32", categoria: "Alta Magia Espiritual", imagem: img32 },
+  { id: 33, nome: "Serviço 33", categoria: "Alta Magia Espiritual", imagem: img33 }
 ];
 
 export const CURSOS = [
-  {
-    id: "curso-1",
-    nome: "Iniciação à Magia & Oráculos",
-    descricao: "Material completo com suporte e certificado de instrução ritualística.",
-    imagem: imgCurso1,
-    preco: "199,00"
-  },
-  {
-    id: "curso-2",
-    nome: "Desenvolvimento de Médium & Firmezas",
-    descricao: "Material completo com suporte e certificado de instrução ritualística.",
-    imagem: imgCurso2,
-    preco: "497,00"
-  },
-  {
-    id: "curso-3",
-    nome: "Consagração & Alta Magia Espiritual",
-    descricao: "Material completo com suporte e certificado de instrução ritualística.",
-    imagem: imgCurso3,
-    preco: "797,00"
-  }
+  { id: "curso-1", nome: "Iniciação à Magia & Oráculos", imagem: imgCurso1 },
+  { id: "curso-2", nome: "Desenvolvimento de Médium & Firmezas", imagem: imgCurso2 },
+  { id: "curso-3", nome: "Consagração & Alta Magia Espiritual", imagem: imgCurso3 }
 ];
 
 export const PERGUNTAS_FREQUENTES = [
@@ -238,5 +209,6 @@ export const DEPOIMENTOS = [
   { id: 16, imagem: dp16, alt: "Depoimento 16" },
   { id: 17, imagem: dp17, alt: "Depoimento 17" },
   { id: 18, imagem: dp18, alt: "Depoimento 18" },
-  { id: 19, imagem: dp19, alt: "Depoimento 19" }
+  { id: 19, imagem: dp19, alt: "Depoimento 19" },
+  { id: 20, imagem: dp20, alt: "Depoimento 20" }
 ];

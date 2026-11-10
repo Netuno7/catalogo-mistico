@@ -10,8 +10,8 @@ import {
 } from "./data/servicos";
 
 // Componente do Banner de Destaque / Promoção Mês de Outubro
-const DestaqueInicial = () => {
-  const mensagemOutubro = encodeURIComponent("Olá, Sacerdotisa Vênus! Quero aproveitar a Promoção do Mês de Outubro!");
+const DestaqueInicial = ({ onZoom }) => {
+  const mensagemOutubro = encodeURIComponent("Olá, Sacerdotisa Vênus! Quero aproveitar a Promoção do Mês!");
   const linkWaOutubro = `https://wa.me/${CONFIG_SISTEMA.WHATSAPP_NUMERO}?text=${mensagemOutubro}`;
 
   return (
@@ -26,6 +26,9 @@ const DestaqueInicial = () => {
               src={CONFIG_SISTEMA.IMAGEM_DESTAQUE} 
               alt="Destaque Promoção de Outubro" 
               className="destaque-img" 
+              onClick={() => onZoom(CONFIG_SISTEMA.IMAGEM_DESTAQUE)}
+              style={{ cursor: 'pointer' }}
+              title="Clique para ampliar"
             />
             <div className="destaque-overlay-glow"></div>
           </div>
@@ -155,15 +158,15 @@ const BarraBusca = ({ termoBusca, setTermoBusca, placeholder }) => (
   </section>
 );
 
-// Card de Serviço (Apenas Foto 1x1 em destaque e Botão)
-const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicitar }) => {
+// Card de Serviço (Apenas Foto 1x1, clique para Zoom e Botão "Desejo esse trabalho")
+const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicitar, onZoom }) => {
   const isVariante = servico.temVariantes;
   const idxAtual = varianteSelecionada || 0;
 
   return (
     <div className={`card-item ${servico.destaque ? "card-highlight" : ""}`}>
       {servico.imagem && (
-        <div className="card-media card-media-1x1">
+        <div className="card-media card-media-1x1" onClick={() => onZoom(servico.imagem)} title="Clique para ampliar a foto" style={{ cursor: 'pointer' }}>
           <img src={servico.imagem} alt={servico.nome} className="card-img-1x1" />
         </div>
       )}
@@ -178,7 +181,7 @@ const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicit
             >
               {servico.variantes.map((v, i) => (
                 <option key={v.idVar || i} value={i}>
-                  {v.label} — {CONFIG_SISTEMA.MOEDA} {v.preco}
+                  {v.label}
                 </option>
               ))}
             </select>
@@ -192,18 +195,18 @@ const ServiceCard = ({ servico, varianteSelecionada, onSelectVariante, onSolicit
           style={{ width: '100%' }}
           onClick={() => onSolicitar(servico, idxAtual)}
         >
-          <span>Solicitar Atendimento</span>
+          <span>Desejo esse trabalho</span>
         </button>
       </div>
     </div>
   );
 };
 
-// Card de Curso (Apenas Foto 1x1 em destaque e Botão)
-const CursoCard = ({ curso, onSolicitarCurso }) => (
+// Card de Curso (Apenas Foto 1x1, clique para Zoom e Botão)
+const CursoCard = ({ curso, onSolicitarCurso, onZoom }) => (
   <div className="card-item card-highlight card-curso">
     {curso.imagem && (
-      <div className="card-media card-media-1x1">
+      <div className="card-media card-media-1x1" onClick={() => onZoom(curso.imagem)} title="Clique para ampliar a foto" style={{ cursor: 'pointer' }}>
         <img src={curso.imagem} alt={curso.nome} className="card-img-1x1" />
       </div>
     )}
@@ -214,19 +217,18 @@ const CursoCard = ({ curso, onSolicitarCurso }) => (
         style={{ width: '100%' }}
         onClick={() => onSolicitarCurso(curso)}
       >
-        <span>Matricular pelo WhatsApp</span>
+        <span>Desejo esse trabalho</span>
       </button>
     </div>
   </div>
 );
 
 // Seção Cursos
-const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso }) => {
+const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso, onZoom }) => {
   const listaCursos = CURSOS || [];
   const cursosFiltrados = useMemo(() => {
     return listaCursos.filter((curso) =>
-      curso.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
-      curso.descricao.toLowerCase().includes(termoBusca.toLowerCase())
+      curso.nome.toLowerCase().includes(termoBusca.toLowerCase())
     );
   }, [termoBusca, listaCursos]);
 
@@ -254,6 +256,7 @@ const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso }) => {
                 key={curso.id}
                 curso={curso}
                 onSolicitarCurso={onSolicitarCurso}
+                onZoom={onZoom}
               />
             ))}
           </div>
@@ -263,14 +266,14 @@ const CursosSection = ({ termoBusca, setTermoBusca, onSolicitarCurso }) => {
   );
 };
 
-// Depoimentos (Ajustado para formato vertical de tela cheia / Reels no mobile)
-const DepoimentosSection = () => (
+// Depoimentos com suporte a Zoom
+const DepoimentosSection = ({ onZoom }) => (
   <section className="depoimentos-section">
     <h2 className="section-title">Depoimentos & Relatos</h2>
     <p className="section-subtitle">Confira o retorno e os resultados de quem já realizou uma consulta, ritual ou curso</p>
     <div className="depoimentos-grid">
       {DEPOIMENTOS?.map((dep) => (
-        <div key={dep.id} className="depoimento-card">
+        <div key={dep.id} className="depoimento-card" onClick={() => onZoom(dep.imagem)} title="Clique para ampliar o depoimento" style={{ cursor: 'pointer' }}>
           <img src={dep.imagem} alt={dep.alt || "Depoimento"} className="depoimento-img" loading="lazy" />
         </div>
       ))}
@@ -307,50 +310,51 @@ const FAQSection = () => {
   );
 };
 
-// Modal WhatsApp
-const ModalAtendimento = ({ modalItem, onClose, onConfirm }) => {
-  if (!modalItem) return null;
-
-  const { servico, idx, isCurso } = modalItem;
-
-  if (isCurso) {
-    return (
-      <div className="modal-overlay" onClick={onClose}>
-        <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-          <button className="modal-close" onClick={onClose}>✕</button>
-          <h3 className="modal-title">Inscrição no Curso</h3>
-          <p className="modal-desc">Você será redirecionado(a) para o WhatsApp para garantir sua vaga:</p>
-          <div className="modal-summary">
-            <strong>{servico.nome}</strong>
-            <span className="modal-price">Valor: {CONFIG_SISTEMA.MOEDA} {servico.preco}</span>
-          </div>
-          <div className="modal-actions">
-            <button className="btn-cancel" onClick={onClose}>Cancelar</button>
-            <button className="btn-confirm" onClick={() => onConfirm(servico, null, true)}>Ir para o WhatsApp</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const isVar = servico.temVariantes;
-  const opc = isVar && servico.variantes ? servico.variantes[idx] : null;
+// Componente para o Zoom / Tela Cheia da Imagem
+const ModalZoom = ({ imagemZoom, onClose }) => {
+  if (!imagemZoom) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
-        <h3 className="modal-title">Confirmar Solicitação</h3>
-        <p className="modal-desc">Você será redirecionado(a) para o WhatsApp para agendar:</p>
-        <div className="modal-summary">
-          <strong>{servico.nome}</strong>
-          {isVar && opc && <p>Opção: {opc.label}</p>}
-          <span className="modal-price">Valor: {CONFIG_SISTEMA.MOEDA} {isVar && opc ? opc.preco : servico.preco}</span>
-        </div>
-        <div className="modal-actions">
-          <button className="btn-cancel" onClick={onClose}>Cancelar</button>
-          <button className="btn-confirm" onClick={() => onConfirm(servico, idx, false)}>Ir para o WhatsApp</button>
-        </div>
+    <div 
+      onClick={onClose} 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0,0,0,0.95)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 99999,
+        padding: '20px'
+      }}
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()} 
+        style={{ position: 'relative', maxWidth: '90%', maxHeight: '90vh' }}
+      >
+        <button 
+          onClick={onClose} 
+          style={{
+            position: 'absolute',
+            top: '-45px',
+            right: '0',
+            background: 'none',
+            border: 'none',
+            color: '#fff',
+            fontSize: '32px',
+            cursor: 'pointer'
+          }}
+        >
+          ✕
+        </button>
+        <img 
+          src={imagemZoom} 
+          alt="Visualização ampliada" 
+          style={{ width: '100%', maxHeight: '85vh', objectFit: 'contain', borderRadius: '8px' }} 
+        />
       </div>
     </div>
   );
@@ -360,7 +364,7 @@ export default function App() {
   const [abaAtiva, setAbaAtiva] = useState("servicos");
   const [termoBusca, setTermoBusca] = useState("");
   const [variantesState, setVariantesState] = useState({});
-  const [modalItem, setModalItem] = useState(null);
+  const [imagemZoom, setImagemZoom] = useState(null);
 
   const handleSelectVariante = (servicoId, index) => {
     setVariantesState((prev) => ({ ...prev, [servicoId]: index }));
@@ -370,8 +374,7 @@ export default function App() {
 
   const servicosFiltrados = useMemo(() => {
     return listaServicos.filter((servico) =>
-      servico.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
-      servico.descricao.toLowerCase().includes(termoBusca.toLowerCase())
+      servico.nome.toLowerCase().includes(termoBusca.toLowerCase())
     );
   }, [termoBusca, listaServicos]);
 
@@ -379,21 +382,20 @@ export default function App() {
     let mensagemText = "";
 
     if (isCurso) {
-      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Gostaria de me matricular no curso: ${item.nome} (Valor: ${CONFIG_SISTEMA.MOEDA} ${item.preco}).`;
+      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Desejo esse trabalho: ${item.nome}`;
     } else {
       let detalhe = item.nome;
       if (item.temVariantes && item.variantes) {
         const v = item.variantes[indexVar || 0];
-        detalhe = `${item.nome} — [${v?.label}] (Valor: ${CONFIG_SISTEMA.MOEDA} ${v?.preco})`;
+        detalhe = `${item.nome} — [${v?.label}]`;
       } else {
-        detalhe = `${item.nome} (Valor: ${CONFIG_SISTEMA.MOEDA} ${item.preco})`;
+        detalhe = `${item.nome}`;
       }
-      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Gostaria de agendar/solicitar informações sobre: ${detalhe}.`;
+      mensagemText = `Olá, ${CONFIG_SISTEMA.NOME_SACERDOTISA}! Desejo esse trabalho: ${detalhe}.`;
     }
 
     const mensagem = encodeURIComponent(mensagemText);
     window.open(`https://wa.me/${CONFIG_SISTEMA.WHATSAPP_NUMERO}?text=${mensagem}`, "_blank");
-    setModalItem(null);
   };
 
   return (
@@ -401,8 +403,8 @@ export default function App() {
       <HeroHeader />
       <TrustBar />
 
-      {/* Banner de Destaque Místico Decorado */}
-      <DestaqueInicial />
+      {/* Banner de Destaque com suporte a Zoom */}
+      <DestaqueInicial onZoom={(img) => setImagemZoom(img)} />
 
       {/* Navegação de Abas Fixa */}
       <nav className="nav-tabs-container sticky-tabs">
@@ -429,7 +431,7 @@ export default function App() {
       <main className="main-content">
         {abaAtiva === "servicos" && (
           <>
-            <BarraBusca termoBusca={termoBusca} setTermoBusca={setTermoBusca} />
+            <BarraBusca termoBusca={termoBusca} setTermoBusca={setTermoBusca} placeholder="Busque por número ou nome do serviço..." />
 
             <section className="grid-section">
               {servicosFiltrados.length === 0 ? (
@@ -448,7 +450,8 @@ export default function App() {
                       servico={servico}
                       varianteSelecionada={variantesState[servico.id]}
                       onSelectVariante={handleSelectVariante}
-                      onSolicitar={(s, idx) => setModalItem({ servico: s, idx, isCurso: false })}
+                      onSolicitar={(s, idx) => dispararWhatsApp(s, idx, false)}
+                      onZoom={(img) => setImagemZoom(img)}
                     />
                   ))}
                 </div>
@@ -461,12 +464,13 @@ export default function App() {
           <CursosSection 
             termoBusca={termoBusca} 
             setTermoBusca={setTermoBusca} 
-            onSolicitarCurso={(curso) => setModalItem({ servico: curso, idx: null, isCurso: true })}
+            onSolicitarCurso={(curso) => dispararWhatsApp(curso, null, true)}
+            onZoom={(img) => setImagemZoom(img)}
           />
         )}
 
         {abaAtiva === "depoimentos" && (
-          <DepoimentosSection />
+          <DepoimentosSection onZoom={(img) => setImagemZoom(img)} />
         )}
 
         <RedesSociaisSection />
@@ -481,10 +485,10 @@ export default function App() {
         </div>
       </footer>
 
-      <ModalAtendimento
-        modalItem={modalItem}
-        onClose={() => setModalItem(null)}
-        onConfirm={dispararWhatsApp}
+      {/* Modal de Zoom / Tela Cheia ao clicar na foto */}
+      <ModalZoom
+        imagemZoom={imagemZoom}
+        onClose={() => setImagemZoom(null)}
       />
     </div>
   );
